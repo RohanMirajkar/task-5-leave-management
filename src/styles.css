@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Montserrat;
+    src: url(assets/fonts/Montserrat-VariableFont_wght.ttf) format('truetype');
+}
+body{
+    font-family: Montserrat;
+    margin: 0;
+    padding: 0;
+    background-color: hsla(217, 50%, 94%, 0.726);
+}
+.p-card .p-card-content{
+    padding: 0;
+}
+.p-dropdown{
+    width: 100%;
+}
+.ng-invalid.ng-touched{
+    border-color: red;
+}

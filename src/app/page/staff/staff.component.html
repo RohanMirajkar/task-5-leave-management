@@ -1,0 +1,74 @@
+<div class="bg-primary flex justify-content-between	p-3">
+    <h4 class="m-0 align-self-center">Staff Dashbord</h4>
+    <button pButton  label="Logout" class="bg-white text-primary" routerLink="/login" (click)="logout()"></button>
+</div>
+<div *ngIf="isobj">
+    <p>{{'welcome ' + isobj.firstname + ' ' +  isobj.lastname}}</p>
+</div>
+<div *ngIf="!isData" class="flex align-items-center flex-column justify-content-center noLeave text-red-500">
+        <p>Not applied any leave yet</p>
+        <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Apply Leave" (click)="applyLeave()"></button>
+</div>
+<div *ngIf="isData">
+    <div class="flex justify-content-end">
+        <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Apply Leave" (click)="applyLeave()" class="mr-3"></button>
+    </div>
+    <div class="grid mx-3">
+        <div class="col-4">
+            <h1>{{totalLeaves}}</h1>
+            <p>Total leaves</p>
+        </div>
+        <div class="col-4">
+            <h1>{{approvedLeaves}}</h1>
+            <p>Approved</p>
+        </div>
+        <div class="col-4">
+            <h1>{{rejected}}</h1>
+            <p>Rejected</p>
+        </div>
+    </div>
+    <div>
+        <div class="grid mx-2 mt-3">
+            <div class="col-12 md:col-6 lg:col-3 mt-2" *ngFor="let leaveObj of isData">
+                <p-card>
+                    <div>
+                        <p class="m-0">{{leaveObj.NOD === 1 ? 'leave For ' + leaveObj.startDate : 'leave From ' + leaveObj.startDate + ' to ' + leaveObj.endDate}}</p>
+                        <p class="m-0"><span class="text-primary font-medium">Number of Days : </span>{{leaveObj.NOD}}</p>
+                        <p class="m-0"><span class="text-primary font-medium"> Reason : </span>
+                            {{leaveObj.reason}}
+                        </p>
+                        <p class="m-0"><span class="text-primary font-medium"> status : </span>
+                            {{leaveObj.leaveStatus}}
+                        </p>
+                    </div>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid">
+    <p-dialog header="Leave Details" [(visible)]="displayModal" [breakpoints]="{'960px': '100vw'}" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false">
+   <form [formGroup]="myForm" (ngSubmit)="submitLeave()">
+    <div class="grid">
+        <div class="col-12 md:col-6">
+            <label for="startdate" class="mb-2">From</label>
+            <input type="date" class="w-full h-full" formControlName="startDate" id="startdate" value="(DATE)">
+        </div>
+        <div class="col-12 md:col-6">
+            <label for="endDate" class="mb-2">To</label>
+            <input type="date" class="w-full h-full" formControlName="endDate" id="endDate">
+        </div>
+        <div class="col-12 mt-3">
+            <label for="reason">Reason</label>
+            <textarea pInputTextarea class="w-full"  formControlName="reason" id="reason"></textarea>
+        </div>
+        <div class="mt-3 flex justify-content-end w-full">
+            <button pButton type="submit" label="Submit" class="p-button-success" (click)="applyLeave()"></button>
+        </div>
+    </div>
+   </form>
+</p-dialog>
+</div>
+<p-toast position="top-right"></p-toast>
+

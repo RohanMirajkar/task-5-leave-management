@@ -1,0 +1,22 @@
+<div class="grid h-screen align-items-center m-0 p-0">
+    <div class="col-12 md:col-4 md:col-offset-4">
+        <p-card class="pt-0"> 
+            <h3 class="m-0 p-0 text-primary-300 mb-2">EA-16</h3>
+            <form [formGroup]="myForm" (ngSubmit)="logIn()">
+                <span class="p-float-label w-full mt-4">
+                    <input id="float-input" type="text" pInputText class="w-full" formControlName="username">
+                    <label for="float-input">Username</label>
+                </span>
+                <span *ngIf="this.myForm.get('username')?.touched && this.myForm.get('username')?.invalid" class="text-red-500">Username Is Required.</span>
+                <span class="p-float-label w-full mt-4">
+                    <input id="float-input" type="text" pInputText class="w-full" formControlName="password"> 
+                    <label for="float-input">Password</label>
+                </span>
+                <span *ngIf="this.myForm.get('password')?.touched && this.myForm.get('password')?.invalid" class="text-red-500">Password Is Required.</span>
+                <button pButton type="submit" label="Log In" class="w-full mt-4" [disabled]="!myForm.valid"></button>
+                <span class="text-red-500" *ngIf="errMeg">Username and Password does not exsist...!</span>
+                <p class="text-center">Not Registered Yet ..? <span class="text-primary" routerLink="/signup">Register</span></p>
+            </form>
+        </p-card>
+    </div>
+</div>

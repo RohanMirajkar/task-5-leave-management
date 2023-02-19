@@ -1,0 +1,36 @@
+<div class="bg-primary flex justify-content-between	p-3">
+    <h4 class="m-0 align-self-center">HOD Dashbord</h4>
+    <button pButton type="submit" label="Logout" class="bg-white text-primary" routerLink="/login" (click)="logout()"></button>
+</div>
+<div *ngIf="userObj">
+    <p>{{'welcome ..' +userObj.firstname + ' ' + userObj.lastname}}</p>
+</div>
+<div *ngIf="!isData" class="flex align-items-center justify-content-center noLeave text-red-500">
+        No leave request available
+</div>
+<div *ngIf="isData">
+    <div class="grid mx-2 mt-3">
+        <div class="col-12 md:col-6 lg:col-3 mt-2" *ngFor="let leave of leaveArr">
+            <p-card>
+                <div>
+                    <h3 class="m-0">{{leave.firstname + ' ' + leave.lastname}}</h3>
+                    <p class="m-0">{{leave.NOD === 1 ? 'leave For ' + leave.startDate : 'leave From ' + leave.startDate + ' to ' + leave.endDate}}</p>
+                    <p><span class="text-primary font-medium">Number of Days : </span>{{leave.NOD}}</p>
+                    <p><span class="text-primary font-medium"> Reason : </span> <br>
+                        {{leave.reason}}
+                    </p>
+                    <div class="flex justify-content-between" *ngIf="leave.leaveStatus === 'pending'">
+                        <button pButton pRipple type="button" class="p-button-success font-medium" (click)="leaveAct(leave ,approveBtn )" #approveBtn>Approve</button>
+                        <button pButton pRipple type="button" class="p-button-danger font-medium" (click)="leaveAct(leave , rejBtn)" #rejBtn>Reject</button>
+                    </div>
+                    <div class="flex justify-content-between" *ngIf="leave.leaveStatus === 'approved'">
+                        <p class="text-green-400"><i class="pi pi-check" style="font-size: 2rem"></i>approved</p>
+                    </div>
+                    <div class="flex justify-content-between" *ngIf="leave.leaveStatus === 'rejected'">
+                        <p class="text-red-400"><i class="pi pi-check" style="font-size: 2rem"></i>Rejected</p>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+</div>

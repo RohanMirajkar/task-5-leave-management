@@ -1,0 +1,71 @@
+<div class="grid h-screen align-items-center m-0 p-0">
+    <div class="col-12 md:col-6 md:col-offset-3">
+        <p-card class="pt-0"> 
+            <h3 class="m-0 p-0 text-primary-300 mb-2">Sign-Up</h3>
+            <form [formGroup]="myForm" (ngSubmit)="register()">
+            <div class="grid">
+                <div class="col-12 mt-2">
+                    <input type="radio" id="hod" value="hod" name="role" formControlName="role">
+                    <label for="hod" class="ml-1 mr-3">HOD</label>
+                    <input type="radio" id="staff" value="staff" name="role"  formControlName="role">
+                    <label for="staff" class="ml-1">Staff</label>
+                    <span *ngIf="this.myForm.get('role')?.touched && this.myForm.get('role')?.invalid" class="text-red-500">Role Is Required.</span>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-float-label w-full mt-2">
+                        <input id="fname" type="text" pInputText class="w-full"  formControlName="firstname"> 
+                        <label for="fname">First Name</label>
+                    </span>
+                    <span *ngIf="this.myForm.get('firstname')?.touched && this.myForm.get('firstname')?.invalid" class="text-red-500">firstname Is Required.</span>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-float-label w-full mt-2">
+                        <input id="lname" type="text" pInputText class="w-full"  formControlName="lastname"> 
+                        <label for="lname">Last Name</label>
+                    </span>
+                    <span *ngIf="this.myForm.get('lastname')?.touched && this.myForm.get('lastname')?.invalid" class="text-red-500">lastname Is Required.</span>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-float-label w-full mt-2">
+                        <input id="email" type="email" pInputText class="w-full"  formControlName="email"> 
+                        <label for="email">Email</label>
+                    </span>
+                    <span *ngIf="this.myForm.get('email')?.touched && this.myForm.get('email')?.invalid" class="text-red-500">Email Is Required.</span>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-float-label w-full mt-2">
+                        <input id="contact" type="text" pInputText class="w-full"  formControlName="contact"> 
+                        <label for="contact">Contact</label>
+                    </span>
+                    <span *ngIf="this.myForm.get('contact')?.touched && this.myForm.get('contact')?.invalid" class="text-red-500">Contact Is Required.</span>
+                </div>
+                <div class="col-12 md:col-6">
+                    <p-dropdown [options]="departments" placeholder="Department" [showClear]="true" class="w-full" formControlName="department"></p-dropdown>
+                    <span *ngIf="this.myForm.get('department')?.touched && this.myForm.get('department')?.invalid" class="text-red-500">Department Is Required.</span>
+                </div>
+                <div class="col-12 md:col-6">
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-float-label w-full mt-2">
+                        <input id="username" type="text" pInputText class="w-full"  formControlName="username"> 
+                        <label for="username">Username</label>
+                    </span>
+                    <span *ngIf="this.myForm.get('username')?.touched && this.myForm.get('username')?.invalid" class="text-red-500">Username Is Required.</span>
+                </div>
+                <div class="col-12 md:col-6">
+                    <span class="p-float-label w-full mt-2">
+                        <input id="password" type="text" pInputText class="w-full"  formControlName="password"> 
+                        <label for="password">Password</label>
+                    </span>
+                    <span *ngIf="this.myForm.get('password')?.touched && this.myForm.get('password')?.invalid" class="text-red-500">Password Is Required.</span>
+                </div>
+                <button pButton type="submit" label="Sign Up" class="w-full mt-4 m-2" [disabled]="!myForm.valid" ></button>
+                <div class="flex justify-content-center w-full">
+                    <p>Already Registered ..? <span class="text-primary" routerLink="/login">Login</span></p>
+                </div>
+            </div>
+            </form>
+        </p-card>
+    </div>
+</div>
+<p-toast position="top-right"></p-toast>
