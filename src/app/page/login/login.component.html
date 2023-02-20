@@ -5,11 +5,12 @@
             <form [formGroup]="myForm" (ngSubmit)="logIn()">
                 <span class="p-float-label w-full mt-4">
                     <input id="float-input" type="text" pInputText class="w-full" formControlName="username">
+                    
                     <label for="float-input">Username</label>
                 </span>
                 <span *ngIf="this.myForm.get('username')?.touched && this.myForm.get('username')?.invalid" class="text-red-500">Username Is Required.</span>
                 <span class="p-float-label w-full mt-4">
-                    <input id="float-input" type="text" pInputText class="w-full" formControlName="password"> 
+                    <p-password formControlName="username" id="float-input" [feedback]="false" class="w-full"></p-password> 
                     <label for="float-input">Password</label>
                 </span>
                 <span *ngIf="this.myForm.get('password')?.touched && this.myForm.get('password')?.invalid" class="text-red-500">Password Is Required.</span>

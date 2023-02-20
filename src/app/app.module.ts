@@ -22,6 +22,7 @@ import {DialogModule} from 'primeng/dialog';
 import {CalendarModule} from 'primeng/calendar';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { NocomponentComponent } from './page/nocomponent/nocomponent.component';
+import {PasswordModule} from 'primeng/password';
 
 
 
@@ -55,7 +56,8 @@ import { NocomponentComponent } from './page/nocomponent/nocomponent.component';
     MessageModule,
     DialogModule,
     CalendarModule,
-    InputTextareaModule
+    InputTextareaModule,
+    PasswordModule
   ],
   providers: [],
   bootstrap: [AppComponent]
