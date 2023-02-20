@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit , OnDestroy{
   }
 
   logIn(){
-    let loggedUser = this.myForm.value
+    let loggedUser = this.myForm.value;
     this.signupServ.getUsers().pipe(takeUntil(this.unSubscribe$)).subscribe((userArr : any[]) =>{
       let userDetail = userArr.filter((user : any) => user.username === loggedUser.username && user.password === loggedUser.password);
       if(!(userDetail.length === 0)){
