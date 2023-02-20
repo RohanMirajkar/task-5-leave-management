@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { LeaveService } from 'src/app/shared/services/leave-service';
 import { signupService } from 'src/app/shared/services/signup-service';
 
@@ -26,38 +26,37 @@ export class HodComponent implements OnInit {
     //get leaves of department 
     this.leaveServ.getLeaves().pipe(
       takeUntil(this.unSubscribe$))
-    .subscribe((data: any) => {
-      let leaveArr : any[] = [];
-      for(let key in data){
-        if(data[key].department === this.userObj.department){
-          leaveArr.push({...data[key] , leaveID : key})
+      .subscribe((data: any) => {
+        let leaveArr: any[] = [];
+        for (let key in data) {
+          if (data[key].department === this.userObj.department) {
+            leaveArr.push({ ...data[key], leaveID: key })
+          }
         }
-      }
-      if(!(leaveArr.length === 0)){
-        this.leaveArr = leaveArr;
-        this.isData = true;
-        console.log(this.leaveArr)
-      }
-    })
+        if (!(leaveArr.length === 0)) {
+          this.leaveArr = leaveArr;
+          this.isData = true;
+          console.log(this.leaveArr)
+        }
+      })
   }
 
-  
+
 
   leaveAct(leaveObj: any, btn: any) {
     if (btn.innerText === 'Approve') {
       leaveObj.leaveStatus = 'approved'
       console.log(leaveObj)
-      this.leaveServ.updateLeave(leaveObj,leaveObj.leaveID).pipe(takeUntil(this.unSubscribe$)).subscribe((data : any) => {
+      this.leaveServ.updateLeave(leaveObj, leaveObj.leaveID).pipe(takeUntil(this.unSubscribe$)).subscribe((data: any) => {
         console.log(data)
       })
     } else if (btn.innerText === 'Reject') {
       leaveObj.leaveStatus = 'rejected'
       console.log(leaveObj)
-      this.leaveServ.updateLeave(leaveObj,leaveObj.leaveID).pipe(takeUntil(this.unSubscribe$)).subscribe((data : any) => {
+      this.leaveServ.updateLeave(leaveObj, leaveObj.leaveID).pipe(takeUntil(this.unSubscribe$)).subscribe((data: any) => {
         console.log(data)
       })
     }
-
   }
 
 

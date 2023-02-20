@@ -12,7 +12,7 @@ import { signupService } from 'src/app/shared/services/signup-service';
   providers : [ MessageService]
 })
 export class SignupComponent implements OnInit ,OnDestroy{
-  public departments : any[] = ['Salse' , 'Account','hr'];
+  public departments : any[] = ['Sales' , 'Account','hr'];
   public myForm !: FormGroup;
   private unSubscribe$ = new Subject<void>()
   

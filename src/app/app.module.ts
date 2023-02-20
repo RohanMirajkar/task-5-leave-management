@@ -19,7 +19,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {ToastModule} from 'primeng/toast';
 import { MessageModule } from 'primeng/message';
 import {DialogModule} from 'primeng/dialog';
-import { LeavediologComponent } from './leavediolog/leavediolog.component';
 import {CalendarModule} from 'primeng/calendar';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { NocomponentComponent } from './page/nocomponent/nocomponent.component';
@@ -39,7 +38,6 @@ import { NocomponentComponent } from './page/nocomponent/nocomponent.component';
     SignupComponent,
     HodComponent,
     StaffComponent,
-    LeavediologComponent,
     NocomponentComponent
   ],
   imports: [

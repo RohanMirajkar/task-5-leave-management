@@ -72,7 +72,7 @@ export class StaffComponent implements OnInit, OnDestroy {
         // tost message for user to tell leave has sent
         this.messageServ.add({
           severity: 'success',
-          summary: 'SuccessFuly Applied',
+          summary: 'SuccessFully Applied',
           detail: `applyed leave for ${leaveObj.NOD} days..`,
           life: 100000
         })
